@@ -5,11 +5,16 @@ WORKDIR /app
 EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
+#список директорий в контейнере
+#RUN echo $(ls)
+#текущая директория с полным путем
+#RUN echo $(pwd)
 WORKDIR /src
-COPY ["API/API.csproj", "API/"]
-RUN dotnet restore "API/API.csproj"
+COPY "API.csproj" "API.csproj"
+RUN dotnet restore "API.csproj"
+#WORKDIR "/src"
 COPY . .
-WORKDIR "/src/API"
+RUN echo $(ls)
 RUN dotnet build "API.csproj" -c Release -o /app/build
 
 FROM build AS publish
