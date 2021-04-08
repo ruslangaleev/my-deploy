@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  api:
+    image: myproject.api
+    build:
+      context: .
+      dockerfile: backend/MyProject/API/Dockerfile
+    ports:
+      - 5000:80
