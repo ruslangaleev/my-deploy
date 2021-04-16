@@ -10,11 +10,5 @@ namespace Tests
         {
             Assert.True(true);
         }
-
-        [Fact]
-        public void InvalidTest()
-        {
-            Assert.True(false);
-        }
     }
 }
