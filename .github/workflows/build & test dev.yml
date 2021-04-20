@@ -17,8 +17,8 @@ jobs:
       with:
         dotnet-version: 3.1.x
     - name: Restore dependencies
-      run: dotnet restore ./src/backend/MyProject
+      run: dotnet restore ./server
     - name: Build
-      run: dotnet build ./src/backend/MyProject --no-restore
+      run: dotnet build ./server --no-restore
     - name: Test
-      run: dotnet test ./src/backend/MyProject --no-build --verbosity normal
+      run: dotnet test ./server --no-build --verbosity normal
