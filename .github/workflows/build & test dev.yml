@@ -22,6 +22,8 @@ jobs:
       run: dotnet build ./server --no-restore
     - name: Test
       run: dotnet test ./server --no-build --verbosity normal
+    - name: Structure OS
+      run: echo $(ls)
   publish:
     needs: [build]
     runs-on: ubuntu-latest
