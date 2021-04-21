@@ -43,6 +43,7 @@ jobs:
           #src: ./*
           #src: ../*
           #src: /.
+          src: ${{GITHUB_REPOSITORY}}
           host: ${{ secrets.SERVER_IP }}
           remote: ${{ secrets.SERVER_DIR }}
           port: ${{ secrets.SERVER_PORT }}
