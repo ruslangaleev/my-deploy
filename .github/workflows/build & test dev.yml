@@ -34,4 +34,4 @@ jobs:
     steps:
       - name: Push project to server
         # Пушим образ в registry
-        run: scp -P $SERVER_PORT -i $SSH_KEY -r * $USER_NAME@$SERVER_IP:/home/github/my-deploy
+        run: scp -P ${{SERVER_PORT}} -i ${{SSH_KEY}} -r * ${{USER_NAME}}@${{SERVER_IP}}:/home/github/my-deploy
