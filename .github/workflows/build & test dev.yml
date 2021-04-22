@@ -24,8 +24,8 @@ jobs:
       run: dotnet test ./server --no-build --verbosity normal
     - name: Structure OS
       run: echo $(ls)
-    - name: GITHUB_REPOSITORY
-      run: echo ${GITHUB_REPOSITORY}
+    - name: parent working directory
+      run: pwd
   publish:
     needs: [build]
     runs-on: ubuntu-latest
@@ -39,7 +39,7 @@ jobs:
       - name: Publish files to VPS via SSH key
         uses: garygrossgarten/github-action-scp@release
         with:
-          local: nginx.conf
+          local: /home/runner/work
           host: ${{ secrets.SERVER_IP }}
           remote: ${{ secrets.SERVER_DIR }}
           port: ${{ secrets.SERVER_PORT }}
