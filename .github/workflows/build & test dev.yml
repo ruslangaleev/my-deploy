@@ -36,10 +36,14 @@ jobs:
       SERVER_IP: ${{ secrets.SERVER_IP }}
       USER_NAME: ${{ secrets.USER_NAME }}
     steps:
-      - name: Publish
+      - name: Copy files to deploy directory
+        run: |
+          mkdir ../build
+          cp -TR . ../build
+      - name: Publish files to VPS via SSH key
         uses: nogsantos/scp-deploy@master
         with:
-          src: .
+          src: build
           host: ${{ secrets.SERVER_IP }}
           remote: ${{ secrets.SERVER_DIR }}
           port: ${{ secrets.SERVER_PORT }}
