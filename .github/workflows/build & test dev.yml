@@ -39,7 +39,7 @@ jobs:
           mkdir ../build
           cp -TR . ../build
       - name: ls
-        run: echo ../*/
+        run: echo ../build/*/
       - name: Publish files to VPS via SSH key
         uses: garygrossgarten/github-action-scp@release
         with:
