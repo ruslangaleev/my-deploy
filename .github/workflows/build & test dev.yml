@@ -43,7 +43,7 @@ jobs:
       - name: Publish files to VPS via SSH key
         uses: nogsantos/scp-deploy@master
         with:
-          src: build
+          src: "nginx.conf"
           host: ${{ secrets.SERVER_IP }}
           remote: ${{ secrets.SERVER_DIR }}
           port: ${{ secrets.SERVER_PORT }}
