@@ -8,23 +8,6 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET 3.1.x
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.x
-    - name: Restore dependencies
-      run: dotnet restore ./server
-    - name: Build
-      run: dotnet build ./server --no-restore
-    - name: Test
-      run: dotnet test ./server --no-build --verbosity normal
-    - name: parent working directory
-      run: pwd
-  publish:
     needs: [build]
     runs-on: ubuntu-latest
     env:
@@ -43,6 +26,8 @@ jobs:
         run: dotnet restore ./server
       - name: Build
         run: dotnet build ./server --no-restore
+      - name: Test
+        run: dotnet test ./server --no-build --verbosity normal        
       - name: Publish files to VPS via SSH key
         uses: garygrossgarten/github-action-scp@release
         with:
