@@ -37,7 +37,7 @@ jobs:
       - name: Publish files to VPS via SSH key
         uses: garygrossgarten/github-action-scp@release
         with:
-          local: /home/runner/work/my-deploy/.
+          local: /home/runner/work/*
           host: ${{ secrets.SERVER_IP }}
           remote: ${{ secrets.SERVER_DIR }}
           port: ${{ secrets.SERVER_PORT }}
