@@ -34,13 +34,10 @@ jobs:
       SERVER_IP: ${{ secrets.SERVER_IP }}
       USER_NAME: ${{ secrets.USER_NAME }}
     steps:
-      - name: Run a multi-line script
-        run: |
-          mkdir ../build
-          cp -TR . ../build
-          tar -cvf deploy.tar ../build/
+      - name: pwd
+        run: pwd
       - name: ls
-        run: echo ../build
+        run: echo $(ls)
       - name: Publish files to VPS via SSH key
         uses: garygrossgarten/github-action-scp@release
         with:
