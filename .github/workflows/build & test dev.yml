@@ -36,6 +36,7 @@ jobs:
       SERVER_IP: ${{ secrets.SERVER_IP }}
       USER_NAME: ${{ secrets.USER_NAME }}
     steps:
+      - 
       - name: Publish
         uses: nogsantos/scp-deploy@master
         with:
@@ -43,7 +44,8 @@ jobs:
           #src: ./*
           #src: ../*
           #src: /.
-          src: ${GITHUB_REPOSITORY}
+          #src: ${GITHUB_REPOSITORY}
+          src: nginx.conf
           host: ${{ secrets.SERVER_IP }}
           remote: ${{ secrets.SERVER_DIR }}
           port: ${{ secrets.SERVER_PORT }}
