@@ -50,3 +50,15 @@ jobs:
           port: ${{ secrets.SERVER_PORT }}
           username: ${{ secrets.USER_NAME }}
           privateKey: ${{ secrets.SSH_KEY }}
+  restart:
+    needs: [publish]
+    runs-on: ubuntu-latest
+    steps:
+    - name: production docker-compose up
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SERVER_IP }}
+        username: ${{ secrets.USER_NAME }}
+        key: ${{ secrets.SSH_KEY }}
+        port: ${{ secrets.SERVER_PORT }}
+        script: docker-compose -f /home/github/my-deploy/docker-compose.yml up
