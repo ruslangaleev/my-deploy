@@ -36,7 +36,6 @@ jobs:
       SERVER_IP: ${{ secrets.SERVER_IP }}
       USER_NAME: ${{ secrets.USER_NAME }}
     steps:
-      - 
       - name: Publish
         uses: nogsantos/scp-deploy@master
         with:
