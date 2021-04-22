@@ -32,6 +32,7 @@ jobs:
       SERVER_IP: ${{ secrets.SERVER_IP }}
       USER_NAME: ${{ secrets.USER_NAME }}
     steps:
+      - uses: actions/checkout@v2
       - name: Setup .NET 3.1.x
         uses: actions/setup-dotnet@v1
         with:
@@ -39,7 +40,7 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore ./server
       - name: Build
-        run: dotnet build ./server --no-restore     
+        run: dotnet build ./server --no-restore  
       - name: Publish files to VPS via SSH key
         uses: garygrossgarten/github-action-scp@release
         with:
