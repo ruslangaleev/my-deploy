@@ -24,7 +24,6 @@ jobs:
       run: dotnet test ./server --no-build --verbosity normal
     - name: parent working directory
       run: pwd
-    ]
   publish:
     needs: [build]
     runs-on: ubuntu-latest
