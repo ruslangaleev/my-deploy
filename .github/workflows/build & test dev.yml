@@ -61,4 +61,4 @@ jobs:
         username: ${{ secrets.USER_NAME }}
         key: ${{ secrets.SSH_KEY }}
         port: ${{ secrets.SERVER_PORT }}
-        script: docker-compose -f /home/github/my-deploy/docker-compose.yml -p dev up -d
+        script: docker-compose -f /home/github/my-deploy/docker-compose.dev.yml -p dev up -d
