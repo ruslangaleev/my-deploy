@@ -43,14 +43,10 @@ jobs:
         run: dotnet restore ./server
       - name: Build
         run: dotnet build ./server --no-restore
-      - name: pwd
-        run: pwd
-      - name: ls
-        run: echo $(ls)
       - name: Publish files to VPS via SSH key
         uses: garygrossgarten/github-action-scp@release
         with:
-          local: /home/runner/work/my-deploy
+          local: ./*
           host: ${{ secrets.SERVER_IP }}
           remote: ${{ secrets.SERVER_DIR }}
           port: ${{ secrets.SERVER_PORT }}
