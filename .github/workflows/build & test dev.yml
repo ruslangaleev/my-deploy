@@ -38,12 +38,13 @@ jobs:
         run: |
           mkdir ../build
           cp -TR . ../build
+          tar -cvf deploy.tar ../build/
       - name: ls
         run: echo ../build
       - name: Publish files to VPS via SSH key
         uses: garygrossgarten/github-action-scp@release
         with:
-          local: /home/runner/work/my-deploy/build
+          local: /home/runner/work/my-deploy/deploy.tar
           host: ${{ secrets.SERVER_IP }}
           remote: ${{ secrets.SERVER_DIR }}
           port: ${{ secrets.SERVER_PORT }}
