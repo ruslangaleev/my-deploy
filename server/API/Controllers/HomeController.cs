@@ -14,7 +14,7 @@ namespace API.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var message = "Welcome to my service A";
+            var message = "Welcome to my service B";
 
             return Ok(message);
         }

@@ -61,4 +61,6 @@ jobs:
         username: ${{ secrets.USER_NAME }}
         key: ${{ secrets.SSH_KEY }}
         port: ${{ secrets.SERVER_PORT }}
-        script: docker-compose -f /home/github/my-deploy/docker-compose.dev.yml -p dev up -d
+        # -- build - перестраивает контейнеры
+        # -f docker_compose_file_name - указание docker-compose файла
+        script: docker-compose -f /home/github/my-deploy/docker-compose.dev.yml -p dev up -d -no-deps --build
