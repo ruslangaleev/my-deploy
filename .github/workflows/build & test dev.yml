@@ -54,7 +54,7 @@ jobs:
     needs: [publish]
     runs-on: ubuntu-latest
     steps:
-    - name: production docker-compose up
+    - name: test docker-compose up
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SERVER_IP }}
@@ -63,4 +63,4 @@ jobs:
         port: ${{ secrets.SERVER_PORT }}
         # -- build - перестраивает контейнеры
         # -f docker_compose_file_name - указание docker-compose файла
-        script: docker-compose -f /home/github/my-deploy/docker-compose.dev.yml -p dev up -d -no-deps --build
+        script: docker-compose -f /home/github/my-deploy/docker-compose.test.yml -p test up -d --build
